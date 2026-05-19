@@ -1,17 +1,16 @@
 {
   "displayName": "Sublocade (buprenorphine)",
   "guidance": {
-    "shared": {},
     "early": {
       "guidanceNote": [
-        "This may be given earlier with provider approval"
+        "This may be given earlier with provider approval; consult provider if wanting order to administer early"
       ],
       "minDays": 21
     },
     "late": {
       "variants": [
         {
-          "key": "100mg-booster",
+          "key": "Booster dose of LAI-bup",
           "internalNotes": [
             "Booster dose, optional additional dose between monthly dosing"
           ],
@@ -86,7 +85,7 @@
               "maxDays": null,
               "guidance": {
                 "idealSteps": [
-                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ordering prescriber, ORCA Center provider, ORCA Senior Medical Lead or DESC medical director."
                 ],
                 "providerNotifications": [
                   "Consult prescriber before any injection."
@@ -146,7 +145,7 @@
               "maxDays": null,
               "guidance": {
                 "idealSteps": [
-                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ordering prescriber, ORCA Center provider, ORCA Senior Medical Lead or DESC medical director."
                 ],
                 "providerNotifications": [
                   "Consult prescriber before any injection."
@@ -206,7 +205,7 @@
               "maxDays": null,
               "guidance": {
                 "idealSteps": [
-                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ordering provider, ORCA Center provider, ORCA Senior Medical Lead or DESC medical director."
                 ],
                 "providerNotifications": [
                   "Consult prescriber before any injection."
