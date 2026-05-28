@@ -1,217 +1,224 @@
 {
-    "displayName": "Brixadi (buprenorphine)",
-    "guidance": {
-        "shared": {
-            "providerNotifications": []
-        },
-        "early": {
-            "minDays": 21,
-            "variants": [
-                {
-                    "key": "monthly-64",
-                    "minDays": 21,
-                    "guidanceNote": ["This may be given earlier with provider approval"]
-                },
-                {
-                    "key": "monthly-96",
-                    "sameAs": "monthly-64",
-                    "guidanceNote": ["This may be given earlier with provider approval"]
-                },
-                {
-                    "key": "monthly-128",
-                    "sameAs": "monthly-64",
-                    "guidanceNote": ["This may be given earlier with provider approval"]
-                },
-                {
-                    "key": "weekly",
-                    "minDays": 7,
-                    "guidanceNote": [
-                        "Brixadi weekly early dosing guidance does not exist at this time. Please wait for the next scheduled dosing."
-                    ]
-                }
-            ]
-        },
-        "late": {
-            "variants": [
-                {
-                    "key": "monthly-64",
-                    "internalNotes": [
-                        "Standard monthly tiers shared with 96 mg and 128 mg monthly formulations"
-                    ],
-                    "tiers": [
-                        {
-                            "maxDays": 20,
-                            "guidance": {
-                                "idealSteps": [
-                                    "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 35,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Administer the next injection, regardless of the level of unregulated opioid use.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 42,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 56,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": null,
-                            "guidance": {
-                                "idealSteps": [
-                                    "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber before any injection."
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "key": "monthly-96",
-                    "sameAs": "monthly-64"
-                },
-                {
-                    "key": "monthly-128",
-                    "sameAs": "monthly-64"
-                },
-                {
-                    "key": "weekly",
-                    "internalNotes": [
-                        "Weekly injections (24 mg or 32 mg): 9-day window, then prescriber guidance required"
-                    ],
-                    "tiers": [
-                        {
-                            "maxDays": 6,
-                            "guidance": {
-                                "idealSteps": [
-                                    "The weekly Brixadi injection is not yet due. Please consult the early administration guidance."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 9,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Administer the weekly Brixadi injection. Missed weekly doses (24 mg or 32 mg) may be given up to **9 days** after the last injection per the standing order."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": null,
-                            "guidance": {
-                                "idealSteps": [
-                                    "The weekly Brixadi injection is more than 9 days overdue."
-                                ],
-                                "providerNotifications": [
-                                    "Contact prescriber for guidance before administering."
-                                ]
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    },
-    "optgroupLabel": "Addiction Medicine",
-    "formGroupsSpec": [
+  "displayName": "Brixadi (buprenorphine)",
+  "guidance": {
+    "early": {
+      "minDays": 21,
+      "variants": [
         {
-            "groupId": "brixadi-fields",
-            "fields": [
-                {
-                    "type": "date",
-                    "id": "last-brixadi",
-                    "label": "Date of last Brixadi injection"
-                },
-                {
-                    "type": "select",
-                    "id": "brixadi-type",
-                    "label": "Brixadi formulation and dose",
-                    "placeholder": "Select formulation/dose...",
-                    "options": [
-                        {
-                            "value": "monthly-64",
-                            "label": "Monthly 64 mg"
-                        },
-                        {
-                            "value": "monthly-96",
-                            "label": "Monthly 96 mg"
-                        },
-                        {
-                            "value": "monthly-128",
-                            "label": "Monthly 128 mg"
-                        },
-                        {
-                            "value": "weekly",
-                            "label": "Weekly 24 mg or 32 mg"
-                        }
-                    ]
-                }
-            ]
+          "key": "monthly-64",
+          "minDays": 21,
+          "guidanceNote": [
+            "This may be given earlier with provider approval; consult provider if wanting to give earlier"
+          ],
+          "sameAs": ""
+        },
+        {
+          "key": "monthly-96",
+          "sameAs": "monthly-64",
+          "guidanceNote": [
+            "This may be given earlier with provider approval; consult provider if wanting to give earlier"
+          ],
+          "minDays": null
+        },
+        {
+          "key": "monthly-128",
+          "sameAs": "monthly-64",
+          "guidanceNote": [
+            "This may be given earlier with provider approval; consult provider if wanting to give earlier"
+          ],
+          "minDays": null
+        },
+        {
+          "key": "weekly",
+          "minDays": 5,
+          "guidanceNote": [
+            "This may be given earlier with provider approval; consult provider if wanting to give earlier"
+          ],
+          "sameAs": ""
         }
-    ],
-    "earlySpec": {
-        "paramField": "brixadi-type",
-        "dateField": "last-brixadi"
+      ]
     },
-    "lateSpec": {
-        "requiredFields": [
+    "late": {
+      "variants": [
+        {
+          "key": "monthly-64",
+          "internalNotes": [
+            "Standard monthly tiers shared with 96 mg and 128 mg monthly formulations"
+          ],
+          "tiers": [
             {
-                "id": "last-brixadi",
-                "message": "Please enter the date of last Brixadi injection."
+              "maxDays": 20,
+              "guidance": {
+                "idealSteps": [
+                  "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
+                ]
+              }
             },
             {
-                "id": "brixadi-type",
-                "message": "Please select the Brixadi formulation and dose."
+              "maxDays": 35,
+              "guidance": {
+                "idealSteps": [
+                  "Administer the next injection, regardless of the level of unregulated opioid use.",
+                  "If the patient reports active use of unregulated opioids, discuss a switch to a higher dose of LAI-buprenorphine and consult prescriber if the patient is interested.*"
+                ]
+              }
+            },
+            {
+              "maxDays": 42,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
+                  "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal.",
+                  "If the patient reports active use of unregulated opioids, discuss a switch to a higher dose of LAI-buprenorphine and consult prescriber if the patient is interested.*"
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": 56,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
+                  "If the patient reports active use of unregulated opioids, discuss a switch to a higher dose of LAI-buprenorphine and consult prescriber if the patient is interested.*"
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": null,
+              "guidance": {
+                "idealSteps": [
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center providers, ORCA Senior Medical Lead or DESC medical director."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber before any injection."
+                ]
+              }
             }
-        ],
-        "dateField": "last-brixadi",
-        "paramKey": "variant",
-        "paramField": "brixadi-type",
-        "infoRows": [
+          ]
+        },
+        {
+          "key": "monthly-96",
+          "sameAs": "monthly-64"
+        },
+        {
+          "key": "monthly-128",
+          "sameAs": "monthly-64"
+        },
+        {
+          "key": "weekly",
+          "internalNotes": [
+            "Weekly injections (24 mg or 32 mg): 9-day window, then prescriber guidance required"
+          ],
+          "tiers": [
             {
-                "label": "Formulation/dose:",
-                "field": "brixadi-type",
-                "format": "option-label"
+              "maxDays": 5,
+              "guidance": {
+                "idealSteps": [
+                  "The weekly Brixadi injection is not yet due. Please consult the early administration guidance."
+                ]
+              }
             },
             {
-                "label": "Date of last injection:",
-                "field": "last-brixadi",
-                "format": "date"
+              "maxDays": 9,
+              "guidance": {
+                "idealSteps": [
+                  "Administer the weekly Brixadi injection. Missed weekly doses (24 mg or 32 mg) may be given up to **9 days** after the last injection per the standing order."
+                ]
+              }
             },
             {
-                "label": "Time since last injection:",
-                "format": "days-weeks"
+              "maxDays": null,
+              "guidance": {
+                "idealSteps": [
+                  "The weekly Brixadi injection is more than 9 days overdue."
+                ],
+                "providerNotifications": [
+                  "Contact prescriber for guidance before administering."
+                ]
+              }
             }
-        ]
+          ]
+        }
+      ]
     }
+  },
+  "optgroupLabel": "Addiction Medicine",
+  "formGroupsSpec": [
+    {
+      "groupId": "brixadi-fields",
+      "fields": [
+        {
+          "type": "date",
+          "id": "last-brixadi",
+          "label": "Date of last Brixadi injection"
+        },
+        {
+          "type": "select",
+          "id": "brixadi-type",
+          "label": "Brixadi formulation and dose",
+          "placeholder": "Select formulation/dose...",
+          "options": [
+            {
+              "value": "monthly-64",
+              "label": "Monthly 64 mg"
+            },
+            {
+              "value": "monthly-96",
+              "label": "Monthly 96 mg"
+            },
+            {
+              "value": "monthly-128",
+              "label": "Monthly 128 mg"
+            },
+            {
+              "value": "weekly",
+              "label": "Weekly 24 mg or 32 mg"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "earlySpec": {
+    "paramField": "brixadi-type",
+    "dateField": "last-brixadi"
+  },
+  "lateSpec": {
+    "requiredFields": [
+      {
+        "id": "last-brixadi",
+        "message": "Please enter the date of last Brixadi injection."
+      },
+      {
+        "id": "brixadi-type",
+        "message": "Please select the Brixadi formulation and dose."
+      }
+    ],
+    "dateField": "last-brixadi",
+    "paramKey": "variant",
+    "paramField": "brixadi-type",
+    "infoRows": [
+      {
+        "label": "Formulation/dose:",
+        "field": "brixadi-type",
+        "format": "option-label"
+      },
+      {
+        "label": "Date of last injection:",
+        "field": "last-brixadi",
+        "format": "date"
+      },
+      {
+        "label": "Time since last injection:",
+        "format": "days-weeks"
+      }
+    ]
+  }
 }

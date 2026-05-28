@@ -1,289 +1,288 @@
 {
-    "displayName": "Sublocade (buprenorphine)",
-    "guidance": {
-        "shared": {
-            "providerNotifications": []
-        },
-        "early": {
-            "guidanceNote": ["This may be given earlier with provider approval"],
-            "minDays": 21
-        },
-        "late": {
-            "variants": [
-                {
-                    "key": "100mg-booster",
-                    "internalNotes": [
-                        "Booster dose, optional additional dose between monthly dosing"
-                    ],
-                    "tiers": [
-                        {
-                            "maxDays": null,
-                            "guidance": {
-                                "idealSteps": [
-                                    "A booster dose may be administered any time if these requirements are met:",
-                                    "The client wants the booster dose ",
-                                    "At least 24 hours has passed since the last LAI-buprenorphine injection",
-                                    "The client continues to report use of unregulated fentanyl or other unregulated opioids during the present day"
-                                ],
-                                "providerNotifications": [
-                                    "If the client is reporting NO use of unregulated opioids, please consult a provider. The main risk in this situation is too much buprenorphine causing sedation."
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "key": "100mg-monthly",
-                    "internalNotes": [
-                        "Standard monthly tiers — same threshold structure as Brixadi monthly"
-                    ],
-                    "tiers": [
-                        {
-                            "maxDays": 20,
-                            "guidance": {
-                                "idealSteps": [
-                                    "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 35,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Administer the next injection, regardless of the level of unregulated opioid use.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 42,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 56,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": null,
-                            "guidance": {
-                                "idealSteps": [
-                                    "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber before any injection."
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "key": "300mg-less-than-3-doses",
-                    "internalNotes": [
-                        "300 mg with 2 or less prior doses: longer window to administer regardless, then conditional"
-                    ],
-                    "tiers": [
-                        {
-                            "maxDays": 20,
-                            "guidance": {
-                                "idealSteps": [
-                                    "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 35,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Administer the next injection, regardless of the level of unregulated opioid use."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 49,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 56,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": null,
-                            "guidance": {
-                                "idealSteps": [
-                                    "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber before any injection."
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    "key": "300mg-more-than-2-doses",
-                    "internalNotes": [
-                        "300 mg well-established: widest administer-regardless window before conditional tiers"
-                    ],
-                    "tiers": [
-                        {
-                            "maxDays": 20,
-                            "guidance": {
-                                "idealSteps": [
-                                    "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 49,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Administer the next injection, regardless of the level of unregulated opioid use."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 56,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": 70,
-                            "guidance": {
-                                "idealSteps": [
-                                    "Conduct a fentanyl dependence assessment before administering:",
-                                    "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
-                                ]
-                            }
-                        },
-                        {
-                            "maxDays": null,
-                            "guidance": {
-                                "idealSteps": [
-                                    "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
-                                ],
-                                "providerNotifications": [
-                                    "Consult prescriber before any injection."
-                                ]
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
+  "displayName": "Sublocade (buprenorphine)",
+  "guidance": {
+    "early": {
+      "guidanceNote": [
+        "This may be given earlier with provider approval; consult provider if wanting order to administer early"
+      ],
+      "minDays": 21
     },
-    "optgroupLabel": "Addiction Medicine",
-    "formGroupsSpec": [
+    "late": {
+      "variants": [
         {
-            "groupId": "sublocade-fields",
-            "fields": [
-                {
-                    "type": "date",
-                    "id": "last-sublocade",
-                    "label": "Date of last Sublocade injection"
-                },
-                {
-                    "type": "select",
-                    "id": "sublocade-type",
-                    "label": "Sublocade dose and history",
-                    "placeholder": "Select dose/history...",
-                    "options": [
-                        {
-                            "value": "100mg-booster",
-                            "label": "Sublocade 100 mg - booster dose"
-                        },
-                        {
-                            "value": "100mg-monthly",
-                            "label": "Sublocade 100 mg - monthly dosing"
-                        },
-                        {
-                            "value": "300mg-less-than-3-doses",
-                            "label": "Sublocade 300 mg — 1 or 2 prior injections without gaps >6 weeks"
-                        },
-                        {
-                            "value": "300mg-more-than-2-doses",
-                            "label": "Sublocade 300 mg — 3 or more prior injections without gaps >6 weeks"
-                        }
-                    ]
-                }
-            ]
+          "key": "100mg-booster",
+          "internalNotes": [
+            "Booster dose, optional additional dose between monthly dosing"
+          ],
+          "tiers": [
+            {
+              "maxDays": null,
+              "guidance": {
+                "idealSteps": [
+                  "A booster dose may be administered any time if these requirements are met:",
+                  "The client wants the booster dose ",
+                  "At least 24 hours has passed since the last LAI-buprenorphine injection",
+                  "The client continues to report use of unregulated fentanyl or other unregulated opioids during the present day"
+                ],
+                "providerNotifications": [
+                  "If the client is reporting NO use of unregulated opioids, please consult a provider. The main risk in this situation is too much buprenorphine causing sedation."
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "key": "100mg-monthly",
+          "internalNotes": [
+            "Standard monthly tiers — same threshold structure as Brixadi monthly"
+          ],
+          "tiers": [
+            {
+              "maxDays": 20,
+              "guidance": {
+                "idealSteps": [
+                  "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
+                ]
+              }
+            },
+            {
+              "maxDays": 35,
+              "guidance": {
+                "idealSteps": [
+                  "Administer the next injection, regardless of the level of unregulated opioid use.",
+                  "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
+                ]
+              }
+            },
+            {
+              "maxDays": 42,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
+                  "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal.",
+                  "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": 56,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
+                  "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": null,
+              "guidance": {
+                "idealSteps": [
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ordering prescriber, ORCA Center provider, ORCA Senior Medical Lead or DESC medical director."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber before any injection."
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "key": "300mg-less-than-3-doses",
+          "internalNotes": [
+            "300 mg with 2 or less prior doses: longer window to administer regardless, then conditional"
+          ],
+          "tiers": [
+            {
+              "maxDays": 20,
+              "guidance": {
+                "idealSteps": [
+                  "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
+                ]
+              }
+            },
+            {
+              "maxDays": 35,
+              "guidance": {
+                "idealSteps": [
+                  "Administer the next injection, regardless of the level of unregulated opioid use."
+                ]
+              }
+            },
+            {
+              "maxDays": 49,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
+                  "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": 56,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": null,
+              "guidance": {
+                "idealSteps": [
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ordering prescriber, ORCA Center provider, ORCA Senior Medical Lead or DESC medical director."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber before any injection."
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "key": "300mg-more-than-2-doses",
+          "internalNotes": [
+            "300 mg well-established: widest administer-regardless window before conditional tiers"
+          ],
+          "tiers": [
+            {
+              "maxDays": 20,
+              "guidance": {
+                "idealSteps": [
+                  "The injection is not yet overdue (less than 3 weeks since last administration). Please consult the early administration guidance."
+                ]
+              }
+            },
+            {
+              "maxDays": 49,
+              "guidance": {
+                "idealSteps": [
+                  "Administer the next injection, regardless of the level of unregulated opioid use."
+                ]
+              }
+            },
+            {
+              "maxDays": 56,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
+                  "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": 70,
+              "guidance": {
+                "idealSteps": [
+                  "Conduct a fentanyl dependence assessment before administering:",
+                  "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
+                ]
+              }
+            },
+            {
+              "maxDays": null,
+              "guidance": {
+                "idealSteps": [
+                  "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ordering provider, ORCA Center provider, ORCA Senior Medical Lead or DESC medical director."
+                ],
+                "providerNotifications": [
+                  "Consult prescriber before any injection."
+                ]
+              }
+            }
+          ]
         }
-    ],
-    "lateSpec": {
-        "requiredFields": [
-            {
-                "id": "last-sublocade",
-                "message": "Please enter the date of last Sublocade injection."
-            },
-            {
-                "id": "sublocade-type",
-                "message": "Please select the Sublocade dose and history."
-            }
-        ],
-        "dateField": "last-sublocade",
-        "paramKey": "variant",
-        "paramField": "sublocade-type",
-        "infoRows": [
-            {
-                "label": "Dose/history:",
-                "field": "sublocade-type",
-                "format": "option-label"
-            },
-            {
-                "label": "Date of last injection:",
-                "field": "last-sublocade",
-                "format": "date"
-            },
-            {
-                "label": "Time since last injection:",
-                "format": "days-weeks"
-            }
-        ]
+      ]
     }
+  },
+  "optgroupLabel": "Addiction Medicine",
+  "formGroupsSpec": [
+    {
+      "groupId": "sublocade-fields",
+      "fields": [
+        {
+          "type": "date",
+          "id": "last-sublocade",
+          "label": "Date of last Sublocade injection"
+        },
+        {
+          "type": "select",
+          "id": "sublocade-type",
+          "label": "Sublocade dose and history",
+          "placeholder": "Select dose/history...",
+          "options": [
+            {
+              "value": "100mg-booster",
+              "label": "Sublocade 100 mg - booster dose"
+            },
+            {
+              "value": "100mg-monthly",
+              "label": "Sublocade 100 mg - monthly dosing"
+            },
+            {
+              "value": "300mg-less-than-3-doses",
+              "label": "Sublocade 300 mg — 1 or 2 prior injections without gaps >6 weeks"
+            },
+            {
+              "value": "300mg-more-than-2-doses",
+              "label": "Sublocade 300 mg — 3 or more prior injections without gaps >6 weeks"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "lateSpec": {
+    "requiredFields": [
+      {
+        "id": "last-sublocade",
+        "message": "Please enter the date of last Sublocade injection."
+      },
+      {
+        "id": "sublocade-type",
+        "message": "Please select the Sublocade dose and history."
+      }
+    ],
+    "dateField": "last-sublocade",
+    "paramKey": "variant",
+    "paramField": "sublocade-type",
+    "infoRows": [
+      {
+        "label": "Dose/history:",
+        "field": "sublocade-type",
+        "format": "option-label"
+      },
+      {
+        "label": "Date of last injection:",
+        "field": "last-sublocade",
+        "format": "date"
+      },
+      {
+        "label": "Time since last injection:",
+        "format": "days-weeks"
+      }
+    ]
+  }
 }
