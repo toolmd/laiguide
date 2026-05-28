@@ -285,7 +285,7 @@ describe('collectFormData', () => {
         expect(((result.a as Record<string, unknown>).b as Record<string, unknown>).c).toBe('val');
     });
 
-    it('removes the key from result when all list items are blank (empty list deletes key)', () => {
+    it('sets key to empty array when all list items are blank (preserves empty array)', () => {
         // Build a list editor with only whitespace items
         const listEditor = document.createElement('div');
         listEditor.className = 'list-editor';
@@ -301,8 +301,8 @@ describe('collectFormData', () => {
         listEditor.append(makeItem('  '), makeItem('\t'));
         container.append(listEditor);
 
-        // Base data has a pre-existing 'steps' value that should be removed
+        // Empty list should produce [] rather than deleting the key
         const result = collectFormData(container, { steps: ['old step'] });
-        expect(result.steps).toBeUndefined();
+        expect(result.steps).toEqual([]);
     });
 });

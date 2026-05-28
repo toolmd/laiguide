@@ -215,7 +215,7 @@ export function collectFormData(
         container.querySelectorAll<HTMLTextAreaElement>('.list-item textarea').forEach((ta) => {
             if (ta.value.trim()) items.push(ta.value);
         });
-        setNested(data, container.dataset.path!, items.length > 0 ? items : undefined);
+        setNested(data, container.dataset.path!, items);
     });
 
     return data;
