@@ -123,8 +123,8 @@ describe('getBrixadiGuidance', () => {
     });
 
     describe('weekly (24 mg / 32 mg) — 3 tiers', () => {
-        it('≤6 days: not yet due', () => {
-            const r = getBrixadiGuidance(6, 'weekly');
+        it('≤5 days: not yet due', () => {
+            const r = getBrixadiGuidance(5, 'weekly');
             expect(r.idealSteps.some((s) => s.includes('not yet due'))).toBe(true);
             expect(r.idealSteps.some((s) => s.includes('early administration guidance'))).toBe(
                 true,
@@ -146,12 +146,12 @@ describe('getBrixadiGuidance', () => {
             expect(hasNotif(r.providerNotifications, 'Contact prescriber for guidance')).toBe(true);
         });
 
-        it('exact boundaries: day 6/7 and day 9/10', () => {
+        it('exact boundaries: day 5/6 and day 9/10', () => {
             expect(
-                getBrixadiGuidance(6, 'weekly').idealSteps.some((s) => s.includes('not yet due')),
+                getBrixadiGuidance(5, 'weekly').idealSteps.some((s) => s.includes('not yet due')),
             ).toBe(true);
             expect(
-                getBrixadiGuidance(7, 'weekly').idealSteps.some((s) =>
+                getBrixadiGuidance(6, 'weekly').idealSteps.some((s) =>
                     s.includes('Administer the weekly Brixadi injection'),
                 ),
             ).toBe(true);
@@ -210,13 +210,13 @@ describe('getBrixadiGuidance', () => {
             ).toBe(true);
         });
 
-        it('weekly: day 6 → not due; day 7 → administer; day 10 → prescriber guidance', () => {
+        it('weekly: day 5 → not due; day 6 → administer; day 10 → prescriber guidance', () => {
             const p6 = entry.buildLateParams({
-                'last-brixadi': localDaysAgo(6),
+                'last-brixadi': localDaysAgo(5),
                 'brixadi-type': 'weekly',
             });
             const p7 = entry.buildLateParams({
-                'last-brixadi': localDaysAgo(7),
+                'last-brixadi': localDaysAgo(6),
                 'brixadi-type': 'weekly',
             });
             const p10 = entry.buildLateParams({

@@ -489,7 +489,7 @@ test.describe('early guidance — Brixadi (variant-aware)', () => {
         await expect(page.locator('.guidance-section')).toContainText('Too early to administer');
     });
 
-    test('weekly: no early dosing guidance note shown as bullet', async ({ page }) => {
+    test('weekly: early dosing guidance note shown as bullet', async ({ page }) => {
         await selectField(page, 'medication', 'brixadi');
         await selectField(page, 'guidance-type', 'early');
         await fillDate(page, 'last-brixadi', daysAgo(10));
@@ -498,7 +498,7 @@ test.describe('early guidance — Brixadi (variant-aware)', () => {
         await expect(page.locator('.guidance-section')).toBeVisible();
         await expect(page.locator('.form-section')).not.toBeVisible();
         await expect(page.locator('.guidance-section')).toContainText(
-            'does not exist at this time',
+            'This may be given earlier with provider approval',
         );
     });
 });
@@ -626,7 +626,7 @@ test.describe('late guidance — Vivitrol', () => {
 
         await expect(page.locator('.guidance-section')).toBeVisible();
         await expect(page.locator('.medication-info')).toContainText('Vivitrol');
-        await expect(page.locator('.guidance-section')).toContainText('No UDS required');
+        await expect(page.locator('.guidance-section')).toContainText('No urine drug screen required');
     });
 
     test('OUD, 4-5 weeks: conditional on intentional fentanyl use report', async ({ page }) => {

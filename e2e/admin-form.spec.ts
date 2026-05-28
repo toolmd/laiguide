@@ -12,7 +12,7 @@ async function login(page: Page): Promise<void> {
 }
 
 async function selectFirstMed(page: Page): Promise<void> {
-    await page.locator('#med-select').selectOption({ index: 1 });
+    await page.locator('#med-select').selectOption({ value: 'vivitrol' });
     await expect(page.locator('.form-tab-bar')).toBeVisible();
 }
 

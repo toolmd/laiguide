@@ -19,7 +19,7 @@ describe('vivitrol getLateGuidance', () => {
         it('21–28 days: administer, no UDS required', () => {
             const r = getGuidance(25, 'oud');
             expect(r.idealSteps.some((s) => s.includes('Administer Vivitrol 380 mg'))).toBe(true);
-            expect(r.idealSteps.some((s) => s.includes('No UDS required'))).toBe(true);
+            expect(r.idealSteps.some((s) => s.includes('No urine drug screen required'))).toBe(true);
             expect(r.idealSteps.some((s) => s.includes('minimal or no fentanyl dependence'))).toBe(
                 true,
             );
@@ -32,8 +32,8 @@ describe('vivitrol getLateGuidance', () => {
             expect(
                 r.idealSteps.some((s) => s.includes('intentional fentanyl use IS reported')),
             ).toBe(true);
-            expect(r.idealSteps.some((s) => s.includes('point-of-care UDS'))).toBe(true);
-            expect(hasNotif(r.providerNotifications, 'Consult provider if UDS positive')).toBe(
+            expect(r.idealSteps.some((s) => s.includes('point-of-care urine drug screen'))).toBe(true);
+            expect(hasNotif(r.providerNotifications, 'Consult provider if the urine drug screen is positive')).toBe(
                 true,
             );
         });
@@ -68,10 +68,10 @@ describe('vivitrol getLateGuidance', () => {
                 getGuidance(20, 'oud').idealSteps.some((s) => s.includes('not yet overdue')),
             ).toBe(true);
             expect(
-                getGuidance(21, 'oud').idealSteps.some((s) => s.includes('No UDS required')),
+                getGuidance(21, 'oud').idealSteps.some((s) => s.includes('No urine drug screen required')),
             ).toBe(true);
             expect(
-                getGuidance(28, 'oud').idealSteps.some((s) => s.includes('No UDS required')),
+                getGuidance(28, 'oud').idealSteps.some((s) => s.includes('No urine drug screen required')),
             ).toBe(true);
             expect(
                 getGuidance(29, 'oud').idealSteps.some((s) => s.includes('intentional fentanyl')),
@@ -213,7 +213,7 @@ describe('vivitrol getLateGuidance', () => {
                     }),
                 ) as GuidanceResult;
             expect(g(20).idealSteps.some((s) => s.includes('not yet overdue'))).toBe(true);
-            expect(g(21).idealSteps.some((s) => s.includes('No UDS required'))).toBe(true);
+            expect(g(21).idealSteps.some((s) => s.includes('No urine drug screen required'))).toBe(true);
             expect(g(29).idealSteps.some((s) => s.includes('intentional fentanyl'))).toBe(true);
             expect(
                 g(36).idealSteps.some((s) => s.includes('point-of-care urine drug screen')),

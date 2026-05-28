@@ -231,7 +231,7 @@ describe('showEarlyGuidance — variant path (brixadi)', () => {
         setInputVal('last-brixadi', localDaysAgo(10));
         showEarlyGuidance('brixadi', 'weekly');
         expect(guidance()!.innerHTML).toContain(
-            'Brixadi weekly early dosing guidance does not exist at this time',
+            'This may be given earlier with provider approval',
         );
     });
 

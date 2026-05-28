@@ -564,7 +564,7 @@ describe('handleSubmit — guidance rendering', () => {
         expectGuidanceRendered();
     });
 
-    describe('vivitrol early — single constraint (minDays=28)', () => {
+    describe('vivitrol early — single constraint (minDays=20)', () => {
         function submitEarly(daysSinceLast: number): void {
             setField('medication', 'vivitrol');
             setField('guidance-type', 'early');
@@ -576,8 +576,8 @@ describe('handleSubmit — guidance rendering', () => {
             return document.querySelector('.guidance-content')!.textContent ?? '';
         }
 
-        test('allowed: exactly 28 days since last (on boundary)', () => {
-            submitEarly(28);
+        test('allowed: exactly 20 days since last (on boundary)', () => {
+            submitEarly(20);
             expectGuidanceRendered();
             expect(resultText()).toContain('Early administration is allowed');
         });
@@ -587,16 +587,16 @@ describe('handleSubmit — guidance rendering', () => {
             expect(resultText()).toContain('Early administration is allowed');
         });
 
-        test('not allowed: 27 days since last (1 day under minimum)', () => {
-            submitEarly(27);
+        test('not allowed: 19 days since last (1 day under minimum)', () => {
+            submitEarly(19);
             expect(resultText()).toContain('Too early to administer');
         });
 
-        test('boundary: 28 days → allowed, 27 days → not allowed', () => {
-            submitEarly(28);
+        test('boundary: 20 days → allowed, 19 days → not allowed', () => {
+            submitEarly(20);
             expect(resultText()).toContain('Early administration is allowed');
             setupDOM();
-            submitEarly(27);
+            submitEarly(19);
             expect(resultText()).toContain('Too early to administer');
         });
     });

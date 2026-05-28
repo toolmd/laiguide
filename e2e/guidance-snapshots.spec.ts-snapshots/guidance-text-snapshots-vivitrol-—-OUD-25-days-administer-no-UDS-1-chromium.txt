@@ -2,7 +2,7 @@ Next steps:
 
 Administer Vivitrol 380 mg IM** as long as the patient meets criteria for "minimal or no fentanyl dependence".
 
-No UDS required at this interval.
+No urine drug screen required at this interval.
 
 Criteria met for "minimal or no fentanyl dependence", see definition below
 
@@ -16,7 +16,7 @@ Do not administer and consult provider if patient does not meet criteria for "mi
 
 Patient has any signs of opioid depedency: more than minimal depedency, need to use opioids to avoid withdrawals, unable to go without opioids.
 
-Do not rely only on drug tests as they can be falsely negative, notify provider if there is suspicion of opioid depedency.
+Do not rely only on urine drug tests as they can be falsely negative; notify provider if there is suspicion of opioid dependency.
 
 ---
 
