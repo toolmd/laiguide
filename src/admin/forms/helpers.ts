@@ -194,6 +194,18 @@ function setNested(obj: Record<string, unknown>, path: string, value: unknown): 
     }
 }
 
+function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+    const parts = path.split('.');
+    let target: unknown = obj;
+    for (const part of parts) {
+        if (target == null || typeof target !== 'object') return undefined;
+        target = /^\d+$/.test(part)
+            ? (target as unknown[])[Number(part)]
+            : (target as Record<string, unknown>)[part];
+    }
+    return target;
+}
+
 export function collectFormData(
     formEditor: HTMLDivElement,
     currentMedData: Record<string, unknown>,
@@ -201,13 +213,16 @@ export function collectFormData(
     const data = structuredClone(currentMedData);
 
     formEditor.querySelectorAll<HTMLInputElement>('input[data-path]').forEach((input) => {
+        const path = input.dataset.path!;
         const val =
             input.type === 'number'
                 ? input.value === ''
-                    ? null
+                    ? getNestedValue(currentMedData, path) === undefined
+                        ? undefined
+                        : null
                     : Number(input.value)
-                : input.value;
-        setNested(data, input.dataset.path!, val);
+                : input.value || undefined;
+        setNested(data, path, val);
     });
 
     formEditor.querySelectorAll<HTMLDivElement>('.list-editor[data-path]').forEach((container) => {

@@ -234,9 +234,24 @@ describe('collectFormData', () => {
         expect(collectFormData(container, {}).maxDays).toBe(28);
     });
 
-    it('collects empty number input as null', () => {
+    it('empty number input preserves null when path already existed in original', () => {
         container.append(makeNumberInput('Days', null, 'maxDays'));
-        expect(collectFormData(container, {}).maxDays).toBeNull();
+        expect(collectFormData(container, { maxDays: null }).maxDays).toBeNull();
+    });
+
+    it('empty number input does not add key when path was absent in original', () => {
+        container.append(makeNumberInput('Days', null, 'maxDays'));
+        expect(collectFormData(container, {}).maxDays).toBeUndefined();
+    });
+
+    it('empty text input removes the key', () => {
+        container.append(makeTextInput('Name', '', 'displayName'));
+        expect(collectFormData(container, { displayName: 'Old' }).displayName).toBeUndefined();
+    });
+
+    it('empty text input does not add key when absent in original', () => {
+        container.append(makeTextInput('SameAs', '', 'sameAs'));
+        expect(collectFormData(container, {}).sameAs).toBeUndefined();
     });
 
     it('handles array index in path (tiers.0.maxDays)', () => {
