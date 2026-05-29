@@ -10,6 +10,8 @@
             type="image/png"
             href="./media/logo-desc.png"
         />
+        <!-- Injected at deploy time by the workflow — provides __ADMIN_TOKEN__ -->
+        <script src="./admin-rt.js"></script>
         <script>
             const img = new Image();
             img.onload = () => {
