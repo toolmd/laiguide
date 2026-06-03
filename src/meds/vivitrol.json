@@ -9,7 +9,7 @@
       ]
     },
     "early": {
-      "minDays": 22,
+      "minDays": 60,
       "guidanceNote": []
     },
     "late": {
