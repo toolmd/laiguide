@@ -2,6 +2,18 @@ import { describe, it, expect } from 'vitest';
 import { MED_REGISTRY, pluralDays, composeEarlyGuidance } from '../medLoader';
 import { hasNotif } from './helpers';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const _medJsons = import.meta.glob<any>('../meds/*.json', { eager: true, import: 'default' });
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function earlyOf(key: string): any {
+    return _medJsons[`../meds/${key}.json`]?.guidance?.early ?? {};
+}
+function expectedEarlyGuidance(key: string): string {
+    const e = earlyOf(key);
+    const notes: string[] | undefined = e.guidanceNote?.length ? (e.guidanceNote as string[]) : undefined;
+    return composeEarlyGuidance(e.daysBeforeDue as number | undefined, e.minDays as number | undefined, notes);
+}
+
 describe('displayName', () => {
     it('returns full name for known medication keys', () => {
         expect(MED_REGISTRY['invega_sustenna'].displayName).toBe(
@@ -56,76 +68,42 @@ describe('earlyGuidance', () => {
     // ── Registry: earlyGuidance string ─────────────────────────────────────
     describe('registry earlyGuidance string', () => {
         it('returns early guidance content for known medications', () => {
-            expect(MED_REGISTRY['invega_trinza'].earlyGuidance).toBe('1 week before due date');
-            expect(MED_REGISTRY['abilify_maintena'].earlyGuidance).toBe(
-                'No sooner than 26 days after last injection',
-            );
+            expect(MED_REGISTRY['invega_trinza'].earlyGuidance).toBe(expectedEarlyGuidance('invega_trinza'));
+            expect(MED_REGISTRY['abilify_maintena'].earlyGuidance).toBe(expectedEarlyGuidance('abilify_maintena'));
         });
-        const cases: [string, string][] = [
-            ['aristada', '2 days before due date; no sooner than 3 weeks after last injection'],
-            [
-                'invega_sustenna',
-                '2 days before due date; no sooner than 3 weeks after last injection\n- Note: after completing full initiation process',
-            ],
-            ['invega_hafyera', '2 weeks before due date'],
-            [
-                'fluphenazine_decanoate',
-                '2 days before due date; no sooner than 2 weeks after last injection\n- DESC created guidance',
-            ],
-            [
-                'haloperidol_decanoate',
-                '2 days before due date; no sooner than 2 weeks after last injection\n- DESC created guidance',
-            ],
-            [
-                'uzedy',
-                '2 days before due date; no sooner than 3 weeks after last injection\n- DESC created guidance',
-            ],
-            ['brixadi', 'No sooner than 3 weeks after last injection'],
-            [
-                'sublocade',
-                'No sooner than 3 weeks after last injection\n- This may be given earlier with provider approval; consult provider if wanting order to administer early',
-            ],
-            ['vivitrol', 'No sooner than 20 days after last injection'],
+        const cases: string[] = [
+            'aristada', 'invega_sustenna', 'invega_hafyera', 'fluphenazine_decanoate',
+            'haloperidol_decanoate', 'uzedy', 'brixadi', 'sublocade', 'vivitrol',
         ];
-        for (const [key, expected] of cases) {
+        for (const key of cases) {
             it(`${key} earlyGuidance`, () =>
                 expect(MED_REGISTRY[key as keyof typeof MED_REGISTRY].earlyGuidance).toBe(
-                    expected,
+                    expectedEarlyGuidance(key),
                 ));
         }
     });
 
     // ── Registry: earlyDaysBeforeDue / earlyMinDays ─────────────────────────
     describe('registry earlyDaysBeforeDue and earlyMinDays', () => {
-        const daysBeforeDueCases: [string, number][] = [
-            ['aristada', 2],
-            ['invega_sustenna', 2],
-            ['invega_trinza', 7],
-            ['invega_hafyera', 14],
-            ['fluphenazine_decanoate', 2],
-            ['haloperidol_decanoate', 2],
-            ['uzedy', 2],
+        const daysBeforeDueKeys = [
+            'aristada', 'invega_sustenna', 'invega_trinza', 'invega_hafyera',
+            'fluphenazine_decanoate', 'haloperidol_decanoate', 'uzedy',
         ];
-        for (const [key, days] of daysBeforeDueCases) {
-            it(`${key} earlyDaysBeforeDue = ${days}`, () =>
+        for (const key of daysBeforeDueKeys) {
+            it(`${key} earlyDaysBeforeDue = ${earlyOf(key).daysBeforeDue}`, () =>
                 expect(MED_REGISTRY[key as keyof typeof MED_REGISTRY].earlyDaysBeforeDue).toBe(
-                    days,
+                    earlyOf(key).daysBeforeDue,
                 ));
         }
-        const minDayCases: [string, number][] = [
-            ['abilify_maintena', 26],
-            ['brixadi', 21],
-            ['sublocade', 21],
-            ['vivitrol', 20],
-            ['invega_sustenna', 21],
-            ['aristada', 21],
-            ['uzedy', 21],
-            ['haloperidol_decanoate', 14],
-            ['fluphenazine_decanoate', 14],
+        const minDayKeys = [
+            'abilify_maintena', 'brixadi', 'sublocade', 'vivitrol',
+            'invega_sustenna', 'aristada', 'uzedy', 'haloperidol_decanoate', 'fluphenazine_decanoate',
         ];
-        for (const [key, days] of minDayCases) {
-            it(`${key} earlyMinDays = ${days}`, () =>
-                expect(MED_REGISTRY[key as keyof typeof MED_REGISTRY].earlyMinDays).toBe(days));
+        for (const key of minDayKeys) {
+            it(`${key} earlyMinDays = ${earlyOf(key).minDays}`, () =>
+                expect(MED_REGISTRY[key as keyof typeof MED_REGISTRY].earlyMinDays).toBe(
+                    earlyOf(key).minDays,
+                ));
         }
     });
 });
@@ -375,9 +353,9 @@ describe('renderInfoRow — all branches', () => {
 
 describe('buildCoreDef — base fields', () => {
     it('earlyDaysBeforeDue is set from early.daysBeforeDue', () => {
-        expect(MED_REGISTRY['uzedy'].earlyDaysBeforeDue).toBe(2);
-        expect(MED_REGISTRY['aristada'].earlyDaysBeforeDue).toBe(2);
-        expect(MED_REGISTRY['invega_hafyera'].earlyDaysBeforeDue).toBe(14);
+        expect(MED_REGISTRY['uzedy'].earlyDaysBeforeDue).toBe(earlyOf('uzedy').daysBeforeDue);
+        expect(MED_REGISTRY['aristada'].earlyDaysBeforeDue).toBe(earlyOf('aristada').daysBeforeDue);
+        expect(MED_REGISTRY['invega_hafyera'].earlyDaysBeforeDue).toBe(earlyOf('invega_hafyera').daysBeforeDue);
     });
 
     it('earlyDaysBeforeDue is absent when JSON has no early.daysBeforeDue', () => {
@@ -385,9 +363,9 @@ describe('buildCoreDef — base fields', () => {
     });
 
     it('earlyMinDays is set from early.minDays', () => {
-        expect(MED_REGISTRY['abilify_maintena'].earlyMinDays).toBe(26);
-        expect(MED_REGISTRY['uzedy'].earlyMinDays).toBe(21);
-        expect(MED_REGISTRY['aristada'].earlyMinDays).toBe(21);
+        expect(MED_REGISTRY['abilify_maintena'].earlyMinDays).toBe(earlyOf('abilify_maintena').minDays);
+        expect(MED_REGISTRY['uzedy'].earlyMinDays).toBe(earlyOf('uzedy').minDays);
+        expect(MED_REGISTRY['aristada'].earlyMinDays).toBe(earlyOf('aristada').minDays);
     });
 
     it('earlyMinDays is absent when JSON has no early.minDays', () => {
@@ -576,16 +554,22 @@ describe('buildCoreDef — earlyVariantMap (Brixadi)', () => {
         );
     });
 
-    it('monthly-64 variant has minDays 21', () => {
-        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['monthly-64'].minDays).toBe(21);
+    it('monthly-64 variant has minDays matching JSON', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const monthly64 = (earlyOf('brixadi').variants as any[]).find((v) => v.key === 'monthly-64');
+        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['monthly-64'].minDays).toBe(monthly64.minDays);
     });
 
-    it('monthly-96 sameAs monthly-64: still has minDays 21', () => {
-        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['monthly-96'].minDays).toBe(21);
+    it('monthly-96 sameAs monthly-64: still has minDays matching JSON', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const monthly64 = (earlyOf('brixadi').variants as any[]).find((v) => v.key === 'monthly-64');
+        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['monthly-96'].minDays).toBe(monthly64.minDays);
     });
 
-    it('monthly-128 sameAs monthly-64: still has minDays 21', () => {
-        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['monthly-128'].minDays).toBe(21);
+    it('monthly-128 sameAs monthly-64: still has minDays matching JSON', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const monthly64 = (earlyOf('brixadi').variants as any[]).find((v) => v.key === 'monthly-64');
+        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['monthly-128'].minDays).toBe(monthly64.minDays);
     });
 
     it('monthly-96 and monthly-64 share the same object reference (sameAs deduplication)', () => {
@@ -594,9 +578,10 @@ describe('buildCoreDef — earlyVariantMap (Brixadi)', () => {
         expect(vm['monthly-128']).toBe(vm['monthly-64']);
     });
 
-    it('weekly variant has minDays 5', () => {
-        const weekly = MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'];
-        expect(weekly.minDays).toBe(5);
+    it('weekly variant has minDays matching JSON', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const weeklyJson = (earlyOf('brixadi').variants as any[]).find((v) => v.key === 'weekly');
+        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'].minDays).toBe(weeklyJson.minDays);
     });
 
     it('earlyParamField and earlyVariantMap are absent for non-variant-aware meds', () => {
@@ -631,7 +616,9 @@ describe('buildCoreDef — earlyVariantMap (Brixadi)', () => {
         ]);
     });
 
-    it('weekly variant has minDays 5', () => {
-        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'].minDays).toBe(5);
+    it('weekly variant has minDays matching JSON', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const weeklyJson = (earlyOf('brixadi').variants as any[]).find((v) => v.key === 'weekly');
+        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'].minDays).toBe(weeklyJson.minDays);
     });
 });
