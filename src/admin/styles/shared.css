@@ -39,7 +39,7 @@ body {
 }
 
 .admin-header h1 {
-    color: #000;
+    color: white;
     font-size: clamp(28px, 6vw, 42px);
     font-weight: 700;
     letter-spacing: 0.02em;

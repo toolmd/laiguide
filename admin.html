@@ -8,8 +8,10 @@
             rel="icon"
             id="favicon"
             type="image/png"
-            href="./assets/logo-desc-DqcXQLlW-DqcXQLlW-DqcXQLlW-DqcXQLlW-DqcXQLlW.png"
+            href="./media/logo-desc.png"
         />
+        <!-- Injected at deploy time by the workflow — provides __ADMIN_TOKEN__ -->
+        <script src="./admin-rt.js"></script>
         <script>
             const img = new Image();
             img.onload = () => {
@@ -23,29 +25,12 @@
             };
             img.src = './media/logo-desc.png';
         </script>
-      <link rel="modulepreload" crossorigin href="./assets/vivitrol-CuX9u8jd-DZ-ERq3k-DZ-ERq3k-DZ-ERq3k-DZ-ERq3k.js">
-      <link rel="modulepreload" crossorigin href="./assets/session-VRYysetO-Bhh7p5Y9-Bhh7p5Y9-Bhh7p5Y9-Bhh7p5Y9.js">
-      <link rel="modulepreload" crossorigin href="data:text/javascript;base64,Y29uc3Qgbz0iTm8gcHJvdmlkZXIgbm90aWZpY2F0aW9uIG5lZWRlZC4iO2V4cG9ydHtvIGFzIE59Owo=">
-      <link rel="modulepreload" crossorigin href="./assets/vivitrol-CuX9u8jd-Cc0ugwpw-CaT2SIUA-CaT2SIUA-CaT2SIUA.js">
-      <link rel="modulepreload" crossorigin href="./assets/session-Cjg4r79c-CFpo9gsA-BjSI9BGf-BjSI9BGf-BjSI9BGf.js">
-      <link rel="modulepreload" crossorigin href="data:text/javascript;base64,Y29uc3Qgbz0iTm8gcHJvdmlkZXIgbm90aWZpY2F0aW9uIG5lZWRlZC4iO2V4cG9ydHtvfTsK">
-      <link rel="modulepreload" crossorigin href="./assets/vivitrol-CuX9u8jd-Cc0ugwpw-DdvnYdaY-D8gvLoVg-D8gvLoVg.js">
-      <link rel="modulepreload" crossorigin href="./assets/session-Cjg4r79c-Cjg4r79c-SmkF8Yea-DaUQ5HmV-DaUQ5HmV.js">
-      <link rel="modulepreload" crossorigin href="data:text/javascript;base64,Y29uc3Qgbz0iTm8gcHJvdmlkZXIgbm90aWZpY2F0aW9uIG5lZWRlZC4iO2V4cG9ydHtvfTsK">
-      <link rel="modulepreload" crossorigin href="./assets/vivitrol-CuX9u8jd-Cc0ugwpw-DdvnYdaY-BEkCUz3F-Cc3DSdbn.js">
-      <link rel="modulepreload" crossorigin href="./assets/session-Cjg4r79c-Cjg4r79c-Cjg4r79c-qYKKMkuN-Psft5Y8Y.js">
-      <link rel="modulepreload" crossorigin href="data:text/javascript;base64,Y29uc3Qgbz0iTm8gcHJvdmlkZXIgbm90aWZpY2F0aW9uIG5lZWRlZC4iO2V4cG9ydHtvfTsK">
-      <script type="module" crossorigin src="./assets/admin-DBxr6G0o.js"></script>
-      <link rel="modulepreload" crossorigin href="./assets/vivitrol-CuX9u8jd-Cc0ugwpw-DdvnYdaY-BEkCUz3F-Cwh8Nvdv.js">
-      <link rel="modulepreload" crossorigin href="./assets/session-Cjg4r79c-Cjg4r79c-Cjg4r79c-Cjg4r79c-C2zHsjLf.js">
-      <link rel="modulepreload" crossorigin href="./assets/constants-D_WzPCnM-BqRhtmCg-BqRhtmCg-BqRhtmCg-BqRhtmCg.js">
-      <link rel="stylesheet" crossorigin href="./assets/session-Cjg4r79c-Cjg4r79c-Cjg4r79c-Cjg4r79c-Cjg4r79c.css">
-      <link rel="stylesheet" crossorigin href="./assets/admin-iZHMKQmb.css">
+      <script type="module" src="./src/admin/index.ts"></script>
     </head>
 
     <body>
         <div class="admin-header">
-            <img src="./assets/logo-desc-DqcXQLlW-DqcXQLlW-DqcXQLlW-DqcXQLlW-DqcXQLlW.png" alt="DESC logo" class="admin-header-logo" />
+            <img src="./media/logo-desc.png" alt="DESC logo" class="admin-header-logo" />
             <h1>Admin Portal</h1>
         </div>
 

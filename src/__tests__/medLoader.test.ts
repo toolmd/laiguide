@@ -83,9 +83,9 @@ describe('earlyGuidance', () => {
             ['brixadi', 'No sooner than 3 weeks after last injection'],
             [
                 'sublocade',
-                'No sooner than 3 weeks after last injection\n- This may be given earlier with provider approval',
+                'No sooner than 3 weeks after last injection\n- This may be given earlier with provider approval; consult provider if wanting order to administer early',
             ],
-            ['vivitrol', 'No sooner than 4 weeks after last injection'],
+            ['vivitrol', 'No sooner than 20 days after last injection'],
         ];
         for (const [key, expected] of cases) {
             it(`${key} earlyGuidance`, () =>
@@ -116,7 +116,7 @@ describe('earlyGuidance', () => {
             ['abilify_maintena', 26],
             ['brixadi', 21],
             ['sublocade', 21],
-            ['vivitrol', 28],
+            ['vivitrol', 20],
             ['invega_sustenna', 21],
             ['aristada', 21],
             ['uzedy', 21],
@@ -594,9 +594,9 @@ describe('buildCoreDef — earlyVariantMap (Brixadi)', () => {
         expect(vm['monthly-128']).toBe(vm['monthly-64']);
     });
 
-    it('weekly variant has minDays 7', () => {
+    it('weekly variant has minDays 5', () => {
         const weekly = MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'];
-        expect(weekly.minDays).toBe(7);
+        expect(weekly.minDays).toBe(5);
     });
 
     it('earlyParamField and earlyVariantMap are absent for non-variant-aware meds', () => {
@@ -620,18 +620,18 @@ describe('buildCoreDef — earlyVariantMap (Brixadi)', () => {
     it('monthly-64 variant has variant-specific guidanceNote', () => {
         const vm = MED_REGISTRY['brixadi'].earlyVariantMap!;
         expect(vm['monthly-64'].guidanceNote).toEqual([
-            'This may be given earlier with provider approval',
+            'This may be given earlier with provider approval; consult provider if wanting to give earlier',
         ]);
     });
 
     it('weekly variant has its own guidanceNote', () => {
         const vm = MED_REGISTRY['brixadi'].earlyVariantMap!;
         expect(vm['weekly'].guidanceNote).toEqual([
-            'Brixadi weekly early dosing guidance does not exist at this time. Please wait for the next scheduled dosing.',
+            'This may be given earlier with provider approval; consult provider if wanting to give earlier',
         ]);
     });
 
-    it('weekly variant has minDays 7', () => {
-        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'].minDays).toBe(7);
+    it('weekly variant has minDays 5', () => {
+        expect(MED_REGISTRY['brixadi'].earlyVariantMap!['weekly'].minDays).toBe(5);
     });
 });

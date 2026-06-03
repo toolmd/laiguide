@@ -20,12 +20,11 @@ function isDefinitionsData(data: Record<string, unknown>): boolean {
 
 // ── Store ────────────────────────────────────────────────────────────────────
 
-declare const __TOKEN_ENC__: string;
-const GITHUB_TOKEN = __TOKEN_ENC__
-    ? atob(__TOKEN_ENC__)
-          .split('')
-          .map((c) => String.fromCharCode(c.charCodeAt(0) ^ 0x5a))
-          .join('')
+// __ADMIN_TOKEN__ is written to admin-rt.js by the deploy workflow at deploy time.
+// It holds the XOR-encoded PAT so the token is never baked into the build itself.
+const _enc = (window as unknown as Record<string, string>).__ADMIN_TOKEN__ ?? '';
+const GITHUB_TOKEN = _enc
+    ? atob(_enc).split('').map((c) => String.fromCharCode(c.charCodeAt(0) ^ 0x5a)).join('')
     : '';
 const store: MedDataStore = GITHUB_TOKEN
     ? createGitHubStore(GITHUB_OWNER, GITHUB_REPO, GITHUB_TOKEN)

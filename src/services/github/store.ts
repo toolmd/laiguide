@@ -48,6 +48,40 @@ async function ghFetch<T>(url: string, token: string, init?: RequestInit): Promi
     return res.json() as Promise<T>;
 }
 
+/** PUT a file, retrying once on 409 (SHA mismatch) by re-fetching the current SHA. */
+async function putFile(
+    api: string,
+    filePath: string,
+    token: string,
+    branch: string,
+    message: string,
+    content: string,
+    sha: string | null,
+): Promise<void> {
+    const url = `${api}/contents/${filePath}`;
+    const body = (currentSha: string | null) =>
+        JSON.stringify({ message, content, branch, ...(currentSha ? { sha: currentSha } : {}) });
+
+    const res = await fetch(url, {
+        method: 'PUT',
+        headers: headers(token),
+        body: body(sha),
+    });
+
+    if (res.status === 409) {
+        // SHA is stale — re-fetch and retry once
+        const [owner, repo] = api.replace('https://api.github.com/repos/', '').split('/');
+        const freshSha = await getFileSha(owner, repo, filePath, token, branch);
+        await ghFetch(url, token, { method: 'PUT', body: body(freshSha) });
+        return;
+    }
+
+    if (!res.ok) {
+        const errBody = await res.text();
+        throw new Error(`GitHub API ${res.status}: ${errBody}`);
+    }
+}
+
 /** Get the SHA of an existing file (needed for updates and deletes). */
 async function getFileSha(
     owner: string,
@@ -105,15 +139,7 @@ export function createGitHubStore(
             const sha = await getFileSha(owner, repo, filePath, token, branch);
             const bytes = new TextEncoder().encode(JSON.stringify(data, null, 2) + '\n');
             const content = bytesToBase64(bytes);
-            await ghFetch(`${api}/contents/${filePath}`, token, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    message: `Update ${key} via admin portal`,
-                    content,
-                    branch,
-                    ...(sha ? { sha } : {}),
-                }),
-            });
+            await putFile(api, filePath, token, branch, `Update ${key} via admin portal`, content, sha);
         },
 
         async deleteMed(key: string): Promise<void> {
@@ -156,15 +182,15 @@ export function createGitHubStore(
             entries.unshift(entry);
             const bytes = new TextEncoder().encode(JSON.stringify(entries, null, 2) + '\n');
             const content = bytesToBase64(bytes);
-            await ghFetch(`${api}/contents/${CHANGELOG_PATH}`, token, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    message: `Log: ${entry.action} ${entry.medKey} via admin portal`,
-                    content,
-                    branch,
-                    ...(sha ? { sha } : {}),
-                }),
-            });
+            await putFile(
+                api,
+                CHANGELOG_PATH,
+                token,
+                branch,
+                `Log: ${entry.action} ${entry.medKey} via admin portal`,
+                content,
+                sha ?? null,
+            );
         },
     };
 }

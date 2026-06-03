@@ -370,7 +370,7 @@ describe('collectFormData', () => {
         expect(result.guidance.shared.providerNotifications).toEqual(['Updated notification']);
     });
 
-    it('omits blank list items and removes key when all items are blank', () => {
+    it('omits blank list items and sets empty array when all items are blank', () => {
         const med = makeMed();
         renderForm(container, med);
         const list = container.querySelector<HTMLDivElement>(
@@ -381,7 +381,7 @@ describe('collectFormData', () => {
         const result = collectFormData(container, med) as {
             guidance: { shared: { providerNotifications?: string[] } };
         };
-        expect(result.guidance.shared).toBeUndefined();
+        expect(result.guidance.shared.providerNotifications).toEqual([]);
     });
 
     it('writes nested values at the correct path', () => {

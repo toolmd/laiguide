@@ -10,23 +10,23 @@
                 {
                     "key": "monthly-64",
                     "minDays": 21,
-                    "guidanceNote": ["This may be given earlier with provider approval"]
+                    "guidanceNote": ["This may be given earlier with provider approval; consult provider if wanting to give earlier"]
                 },
                 {
                     "key": "monthly-96",
                     "sameAs": "monthly-64",
-                    "guidanceNote": ["This may be given earlier with provider approval"]
+                    "guidanceNote": ["This may be given earlier with provider approval; consult provider if wanting to give earlier"]
                 },
                 {
                     "key": "monthly-128",
                     "sameAs": "monthly-64",
-                    "guidanceNote": ["This may be given earlier with provider approval"]
+                    "guidanceNote": ["This may be given earlier with provider approval; consult provider if wanting to give earlier"]
                 },
                 {
                     "key": "weekly",
-                    "minDays": 7,
+                    "minDays": 5,
                     "guidanceNote": [
-                        "Brixadi weekly early dosing guidance does not exist at this time. Please wait for the next scheduled dosing."
+                        "This may be given earlier with provider approval; consult provider if wanting to give earlier"
                     ]
                 }
             ]
@@ -52,7 +52,7 @@
                             "guidance": {
                                 "idealSteps": [
                                     "Administer the next injection, regardless of the level of unregulated opioid use.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
+                                    "If the patient reports active use of unregulated opioids, discuss a switch to a higher dose of LAI-buprenorphine and consult prescriber if the patient is interested.*"
                                 ]
                             }
                         },
@@ -63,7 +63,7 @@
                                     "Conduct a fentanyl dependence assessment before administering:",
                                     "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
                                     "Administer if they have “moderate fentanyl dependence” and are ok with the risk of some bup-induced withdrawal.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
+                                    "If the patient reports active use of unregulated opioids, discuss a switch to a higher dose of LAI-buprenorphine and consult prescriber if the patient is interested.*"
                                 ],
                                 "providerNotifications": [
                                     "Consult prescriber if patient does not meet minimal/no, or moderate fentanyl dependence criteria."
@@ -76,7 +76,7 @@
                                 "idealSteps": [
                                     "Conduct a fentanyl dependence assessment before administering:",
                                     "Administer next injection if the client has **“minimal/no fentanyl dependence”, see definition below**, or if the client has taken at least 8 mg of sublingual buprenorphine in the last 24 hours.",
-                                    "If the patient reports active use of unregulated opioids, discuss a switch to Sublocade 300 mg and consult prescriber if the patient is interested.*"
+                                    "If the patient reports active use of unregulated opioids, discuss a switch to a higher dose of LAI-buprenorphine and consult prescriber if the patient is interested.*"
                                 ],
                                 "providerNotifications": [
                                     "Consult prescriber if patient does not meet minimal/no fentanyl dependence criteria."
@@ -87,7 +87,7 @@
                             "maxDays": null,
                             "guidance": {
                                 "idealSteps": [
-                                    "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center or medical director."
+                                    "**Consult a prescriber in real-time** before administering. The goal is to avoid having the patient leave without guidance. You may consult the ORCA Center providers, ORCA Senior Medical Lead or DESC medical director."
                                 ],
                                 "providerNotifications": [
                                     "Consult prescriber before any injection."
@@ -111,7 +111,7 @@
                     ],
                     "tiers": [
                         {
-                            "maxDays": 6,
+                            "maxDays": 5,
                             "guidance": {
                                 "idealSteps": [
                                     "The weekly Brixadi injection is not yet due. Please consult the early administration guidance."

@@ -234,9 +234,24 @@ describe('collectFormData', () => {
         expect(collectFormData(container, {}).maxDays).toBe(28);
     });
 
-    it('collects empty number input as null', () => {
+    it('empty number input preserves null when path already existed in original', () => {
         container.append(makeNumberInput('Days', null, 'maxDays'));
-        expect(collectFormData(container, {}).maxDays).toBeNull();
+        expect(collectFormData(container, { maxDays: null }).maxDays).toBeNull();
+    });
+
+    it('empty number input does not add key when path was absent in original', () => {
+        container.append(makeNumberInput('Days', null, 'maxDays'));
+        expect(collectFormData(container, {}).maxDays).toBeUndefined();
+    });
+
+    it('empty text input removes the key', () => {
+        container.append(makeTextInput('Name', '', 'displayName'));
+        expect(collectFormData(container, { displayName: 'Old' }).displayName).toBeUndefined();
+    });
+
+    it('empty text input does not add key when absent in original', () => {
+        container.append(makeTextInput('SameAs', '', 'sameAs'));
+        expect(collectFormData(container, {}).sameAs).toBeUndefined();
     });
 
     it('handles array index in path (tiers.0.maxDays)', () => {
@@ -285,7 +300,7 @@ describe('collectFormData', () => {
         expect(((result.a as Record<string, unknown>).b as Record<string, unknown>).c).toBe('val');
     });
 
-    it('removes the key from result when all list items are blank (empty list deletes key)', () => {
+    it('sets key to empty array when all list items are blank (preserves empty array)', () => {
         // Build a list editor with only whitespace items
         const listEditor = document.createElement('div');
         listEditor.className = 'list-editor';
@@ -301,8 +316,8 @@ describe('collectFormData', () => {
         listEditor.append(makeItem('  '), makeItem('\t'));
         container.append(listEditor);
 
-        // Base data has a pre-existing 'steps' value that should be removed
+        // Empty list should produce [] rather than deleting the key
         const result = collectFormData(container, { steps: ['old step'] });
-        expect(result.steps).toBeUndefined();
+        expect(result.steps).toEqual([]);
     });
 });

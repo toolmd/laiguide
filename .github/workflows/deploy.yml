@@ -6,7 +6,9 @@ on:
     workflow_dispatch:
 
 permissions:
-    contents: write
+    contents: read
+    pages: write
+    id-token: write
 
 # One deploy at a time. Each admin save makes two commits (saveMed + appendChangelog),
 # which would otherwise trigger two parallel deploys that race and one fails.
@@ -19,6 +21,9 @@ jobs:
     deploy:
         name: Build & Deploy
         runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
         steps:
             - uses: actions/checkout@v4
 
@@ -31,43 +36,45 @@ jobs:
               run: npm ci
 
             - name: Build
-              env:
-                  ADMIN_PAT: ${{ secrets.ADMIN_PAT }}
               run: npm run build
 
-            - name: Snapshot source HTML before deploy
+            - name: Inject runtime token
+              env:
+                  ADMIN_PAT: ${{ secrets.ADMIN_PAT }}
               run: |
-                  git show ${{ github.sha }}:index.html     > /tmp/index.html.src
-                  git show ${{ github.sha }}:admin.html     > /tmp/admin.html.src
-                  git show ${{ github.sha }}:changelog.html > /tmp/changelog.html.src
+                  node -e "
+                    const k = 0x5a;
+                    const raw = process.env.ADMIN_PAT || '';
+                    const enc = raw ? Buffer.from([...raw].map(c => c.charCodeAt(0) ^ k)).toString('base64') : '';
+                    require('fs').writeFileSync('dist/admin-rt.js', 'window.__ADMIN_TOKEN__=' + JSON.stringify(enc) + ';');
+                  "
 
-            - name: Deploy to main
-              uses: JamesIves/github-pages-deploy-action@v4
+            - name: Configure Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload Pages artifact
+              uses: actions/upload-pages-artifact@v3
               with:
-                  branch: main
-                  folder: dist/
-                  clean: false
-                  commit-message: 'Deploy built assets [skip ci]'
+                  path: dist/
 
-            - name: Wait for GitHub Pages to propagate
-              run: sleep 60
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
 
-            - name: Cache Playwright browsers
+            - name: Cache Playwright browsers + system deps
               uses: actions/cache@v4
               id: playwright-cache
               with:
-                  path: ~/.cache/ms-playwright
-                  key: playwright-${{ hashFiles('package-lock.json') }}
+                  path: |
+                      ~/.cache/ms-playwright
+                      /var/cache/apt
+                  key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-            - name: Install Playwright browsers
-              if: steps.playwright-cache.outputs.cache-hit != 'true'
-              run: ./node_modules/.bin/playwright install chromium
-
-            - name: Install Playwright system deps
-              run: ./node_modules/.bin/playwright install-deps chromium
+            - name: Install Playwright browsers + system deps
+              run: ./node_modules/.bin/playwright install --with-deps chromium
 
             - name: Post-deploy smoke test (live URL)
               continue-on-error: true
               env:
-                  PLAYWRIGHT_BASE_URL: https://rcwaters.github.io/LAIguide
-              run: npx playwright test e2e/deploy-smoke.spec.ts --project=chromium
+                  PLAYWRIGHT_BASE_URL: ${{ steps.deployment.outputs.page_url }}
+              run: ./node_modules/.bin/playwright test e2e/deploy-smoke.spec.ts --project=chromium
