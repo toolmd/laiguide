@@ -5,6 +5,13 @@ function days(n: number | null): number {
     return n === null ? Infinity : n;
 }
 
+function normalizeGuidance(g: GuidanceResult): GuidanceResult {
+    const result: GuidanceResult = { idealSteps: g.idealSteps };
+    if (g.pragmaticVariations?.length) result.pragmaticVariations = g.pragmaticVariations;
+    if (g.providerNotifications?.length) result.providerNotifications = g.providerNotifications;
+    return result;
+}
+
 export function buildTier(raw: RawTier): LateTier {
     const maxDays = days(raw['maxDays'] as number | null);
     if (raw['guidanceByDose'] != null || raw['guidanceByDoseRules'] != null) {
@@ -12,22 +19,27 @@ export function buildTier(raw: RawTier): LateTier {
             type: 'dose-variant',
             maxDays,
             ...(raw['guidanceByDose'] != null
-                ? { guidanceByDose: raw['guidanceByDose'] as Record<string, GuidanceResult> }
+                ? {
+                      guidanceByDose: Object.fromEntries(
+                          Object.entries(raw['guidanceByDose'] as Record<string, GuidanceResult>).map(
+                              ([k, v]) => [k, normalizeGuidance(v)],
+                          ),
+                      ),
+                  }
                 : {}),
             ...(raw['guidanceByDoseRules'] != null
                 ? {
-                      guidanceByDoseRules: raw['guidanceByDoseRules'] as {
-                          doses: string[];
-                          guidance: GuidanceResult;
-                      }[],
+                      guidanceByDoseRules: (
+                          raw['guidanceByDoseRules'] as { doses: string[]; guidance: GuidanceResult }[]
+                      ).map((r) => ({ ...r, guidance: normalizeGuidance(r.guidance) })),
                       ...(raw['defaultGuidance'] != null
-                          ? { defaultGuidance: raw['defaultGuidance'] as GuidanceResult }
+                          ? { defaultGuidance: normalizeGuidance(raw['defaultGuidance'] as GuidanceResult) }
                           : {}),
                   }
                 : {}),
         };
     }
-    return { type: 'static', maxDays, guidance: raw['guidance'] as GuidanceResult };
+    return { type: 'static', maxDays, guidance: normalizeGuidance(raw['guidance'] as GuidanceResult) };
 }
 
 export function buildTiers(raws: RawTier[]): LateTier[] {
