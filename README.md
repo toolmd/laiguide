@@ -2,13 +2,13 @@
 
 Clinical decision support tool for early or late/overdue long-acting injectable (LAI) medication administration at DESC.
 
-Hosted at [toolmd.github.io/laiguide](https://toolmd.github.io/laiguide).
+Hosted at [toolkitmd.github.io/laiguide](https://toolkitmd.github.io/laiguide).
 
 ## Live URL
 
-**https://toolmd.github.io/laiguide**
+**https://toolkitmd.github.io/laiguide**
 
-**Admin Portal:** https://toolmd.github.io/laiguide/admin.html
+**Admin Portal:** https://toolkitmd.github.io/laiguide/admin.html
 
 > If the page isn't accessible, enable GitHub Pages in the repo: **Settings → Pages → Branch: `main` → Save**
 

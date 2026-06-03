@@ -2,12 +2,12 @@
     "name": "laiguide",
     "private": true,
     "type": "module",
-    "author": "toolmd",
+    "author": "toolkitmd",
     "repository": {
         "type": "git",
-        "url": "https://github.com/toolmd/laiguide.git"
+        "url": "https://github.com/toolkitmd/laiguide.git"
     },
-    "homepage": "https://toolmd.github.io/laiguide",
+    "homepage": "https://toolkitmd.github.io/laiguide",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
