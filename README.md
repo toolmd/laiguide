@@ -2,6 +2,8 @@
 
 Clinical decision support tool for early or late/overdue long-acting injectable (LAI) medication administration at DESC.
 
+Hosted at [toolmd.github.io/laiguide](https://toolmd.github.io/laiguide).
+
 ## Live URL
 
 **https://toolmd.github.io/laiguide**
