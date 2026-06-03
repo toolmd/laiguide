@@ -9,7 +9,8 @@
       ]
     },
     "early": {
-      "minDays": 20
+      "minDays": 22,
+      "guidanceNote": []
     },
     "late": {
       "variants": [
@@ -21,7 +22,9 @@
               "guidance": {
                 "idealSteps": [
                   "Vivitrol is not yet overdue. Please consult the early administration guidance (no sooner than 20 days after the last injection)."
-                ]
+                ],
+                "pragmaticVariations": [],
+                "providerNotifications": []
               }
             },
             {
@@ -32,7 +35,9 @@
                   "No urine drug screen required at this interval.",
                   "**Criteria met for \"minimal or no fentanyl dependence\"**, see definition below",
                   "*If there is ongoing active fentanyl or other unregulated opioid use, discuss a switch to buprenorphine for more robust OUD treatment.*"
-                ]
+                ],
+                "pragmaticVariations": [],
+                "providerNotifications": []
               }
             },
             {
@@ -44,7 +49,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider if the urine drug screen is positive for fentanyl/methadone/opiates/oxycodone, or if patient does not meet \"minimal or no fentanyl dependence\" criteria."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             },
             {
@@ -57,7 +63,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider if unable to obtain UDS, if UDS is positive for fentanyl/methadone/opiates/oxycodone, or if patient does not meet \"minimal or no fentanyl dependence\" criteria."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             },
             {
@@ -68,7 +75,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider before any injection."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             }
           ]
@@ -81,7 +89,9 @@
               "guidance": {
                 "idealSteps": [
                   "Vivitrol is not yet overdue. Please consult the early administration guidance (no sooner than 3 weeks after the last injection)."
-                ]
+                ],
+                "pragmaticVariations": [],
+                "providerNotifications": []
               }
             },
             {
@@ -93,7 +103,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider if patient has regular opioid use."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             },
             {
@@ -106,7 +117,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider if UDS positive for fentanyl/methadone/opiates/oxycodone or if there is concern about opioid dependence."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             },
             {
@@ -119,7 +131,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider if unable to obtain UDS, if UDS is positive for fentanyl/methadone/opiates/oxycodone, or if patient does not meet \"minimal or no fentanyl dependence\" criteria."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             },
             {
@@ -130,7 +143,8 @@
                 ],
                 "providerNotifications": [
                   "Consult provider before any injection."
-                ]
+                ],
+                "pragmaticVariations": []
               }
             }
           ]
