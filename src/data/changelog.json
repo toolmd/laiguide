@@ -1,5 +1,234 @@
 [
   {
+    "timestamp": "2026-06-03T04:52:27.157Z",
+    "email": "darence.thong@desc.org",
+    "action": "update",
+    "medKey": "vivitrol",
+    "displayName": "Vivitrol (naltrexone)",
+    "changes": [
+      {
+        "path": "guidance.early.minDays",
+        "from": "22",
+        "to": "60"
+      }
+    ],
+    "snapshot": {
+      "displayName": "Vivitrol (naltrexone)",
+      "guidance": {
+        "shared": {
+          "providerNotifications": [
+            "Do not administer and consult provider if patient does not meet criteria for \"minimal or no fentanyl dependence\", see definition below.",
+            "Patient has any signs of opioid depedency: more than minimal depedency, need to use opioids to avoid withdrawals, unable to go without opioids.",
+            "Do not rely only on urine drug tests as they can be falsely negative; notify provider if there is suspicion of opioid dependency."
+          ]
+        },
+        "early": {
+          "minDays": 60,
+          "guidanceNote": []
+        },
+        "late": {
+          "variants": [
+            {
+              "key": "oud",
+              "tiers": [
+                {
+                  "maxDays": 20,
+                  "guidance": {
+                    "idealSteps": [
+                      "Vivitrol is not yet overdue. Please consult the early administration guidance (no sooner than 20 days after the last injection)."
+                    ],
+                    "pragmaticVariations": [],
+                    "providerNotifications": []
+                  }
+                },
+                {
+                  "maxDays": 28,
+                  "guidance": {
+                    "idealSteps": [
+                      "Administer Vivitrol 380 mg IM** as long as the patient meets criteria for \"minimal or no fentanyl dependence\".",
+                      "No urine drug screen required at this interval.",
+                      "**Criteria met for \"minimal or no fentanyl dependence\"**, see definition below",
+                      "*If there is ongoing active fentanyl or other unregulated opioid use, discuss a switch to buprenorphine for more robust OUD treatment.*"
+                    ],
+                    "pragmaticVariations": [],
+                    "providerNotifications": []
+                  }
+                },
+                {
+                  "maxDays": 35,
+                  "guidance": {
+                    "idealSteps": [
+                      "**If NO intentional fentanyl use reported AND \"minimal or no fentanyl dependence\" criteria met**, administer Vivitrol (no UDS needed)",
+                      "**If intentional fentanyl use IS reported:** Obtain a point-of-care urine drug screen (document in chart):\n\n- UDS **Negative for fentanyl/methadone/opiates/oxycodone** → Administer Vivitrol if patient meets \"minimal or no fentanyl dependence\" criteria.\n\n- UDS **Positive for fentanyl/methadone/opiates/oxycodone** → Consult provider. If history truly confirms no/minimal withdrawal and no significant fentanyl effects occur after use, may administer or consider naloxone challenge."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider if the urine drug screen is positive for fentanyl/methadone/opiates/oxycodone, or if patient does not meet \"minimal or no fentanyl dependence\" criteria."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                },
+                {
+                  "maxDays": 56,
+                  "guidance": {
+                    "idealSteps": [
+                      "Perform point-of-care urine drug screen",
+                      "If UDS negative for fentanyl/methadone/opiates/oxycodone AND criteria for \"minimal or no fentanyl dependence\" are met, administer Vivitrol.",
+                      "If UDS positive for fentanyl/methadone/opiates/oxycodone, do NOT administer. Further discussion needed on degree of opioid dependence. Consult provider."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider if unable to obtain UDS, if UDS is positive for fentanyl/methadone/opiates/oxycodone, or if patient does not meet \"minimal or no fentanyl dependence\" criteria."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                },
+                {
+                  "maxDays": null,
+                  "guidance": {
+                    "idealSteps": [
+                      "**Consult provider before administering Vivitrol.** The injection is more than 8 weeks overdue. Provider guidance is required before proceeding."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider before any injection."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                }
+              ]
+            },
+            {
+              "key": "overdose-prevention",
+              "tiers": [
+                {
+                  "maxDays": 20,
+                  "guidance": {
+                    "idealSteps": [
+                      "Vivitrol is not yet overdue. Please consult the early administration guidance (no sooner than 3 weeks after the last injection)."
+                    ],
+                    "pragmaticVariations": [],
+                    "providerNotifications": []
+                  }
+                },
+                {
+                  "maxDays": 34,
+                  "guidance": {
+                    "idealSteps": [
+                      "Urine drug screen not required",
+                      "**Administer Vivitrol 380 mg IM** as long as the patient has no intentional daily use of opioids. No UDS required at this interval.\n\nIf there is regular opioid use, do **NOT** administer — consult provider."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider if patient has regular opioid use."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                },
+                {
+                  "maxDays": 41,
+                  "guidance": {
+                    "idealSteps": [
+                      "Obtain a point-of-care urine drug screen unless you have strong confidence the patient has not used opioids (document in chart).",
+                      "If UDS negative for fentanyl/methadone/opiates/oxycodone AND criteria for \"minimal or no fentanyl dependence\" are met, administer Vivitrol.",
+                      "If UDS positive for fentanyl/methadone/opiates/oxycodone, do NOT administer. Further discussion needed on degree of opioid dependence. Consult provider."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider if UDS positive for fentanyl/methadone/opiates/oxycodone or if there is concern about opioid dependence."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                },
+                {
+                  "maxDays": 56,
+                  "guidance": {
+                    "idealSteps": [
+                      "Obtain a point-of-care urine drug screen",
+                      "If UDS negative for fentanyl/methadone/opiates/oxycodone AND criteria for \"minimal or no fentanyl dependence\" are met, administer Vivitrol.",
+                      "If UDS positive for fentanyl/methadone/opiates/oxycodone, do NOT administer. Further discussion needed on degree of opioid dependence. Consult provider."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider if unable to obtain UDS, if UDS is positive for fentanyl/methadone/opiates/oxycodone, or if patient does not meet \"minimal or no fentanyl dependence\" criteria."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                },
+                {
+                  "maxDays": null,
+                  "guidance": {
+                    "idealSteps": [
+                      "**Consult provider before administering Vivitrol.** The injection is more than 8 weeks overdue. Provider guidance is required before proceeding."
+                    ],
+                    "providerNotifications": [
+                      "Consult provider before any injection."
+                    ],
+                    "pragmaticVariations": []
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "optgroupLabel": "Addiction Medicine",
+      "formGroupsSpec": [
+        {
+          "groupId": "vivitrol-fields",
+          "fields": [
+            {
+              "type": "date",
+              "id": "last-vivitrol",
+              "label": "Date of last Vivitrol injection"
+            },
+            {
+              "type": "select",
+              "id": "vivitrol-indication",
+              "label": "Indication for Vivitrol",
+              "placeholder": "Select indication...",
+              "options": [
+                {
+                  "value": "oud",
+                  "label": "OUD treatment"
+                },
+                {
+                  "value": "overdose-prevention",
+                  "label": "Overdose prevention (not OUD)"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "lateSpec": {
+        "requiredFields": [
+          {
+            "id": "last-vivitrol",
+            "message": "Please enter the date of last Vivitrol injection."
+          },
+          {
+            "id": "vivitrol-indication",
+            "message": "Please select the Vivitrol indication."
+          }
+        ],
+        "dateField": "last-vivitrol",
+        "paramKey": "variant",
+        "paramField": "vivitrol-indication",
+        "infoRows": [
+          {
+            "label": "Indication:",
+            "field": "vivitrol-indication",
+            "format": "option-label"
+          },
+          {
+            "label": "Date of last injection:",
+            "field": "last-vivitrol",
+            "format": "date"
+          },
+          {
+            "label": "Time since last injection:",
+            "format": "days-weeks"
+          }
+        ]
+      }
+    }
+  },
+  {
     "timestamp": "2026-06-03T04:48:18.774Z",
     "email": "darence.thong@desc.org",
     "action": "update",
