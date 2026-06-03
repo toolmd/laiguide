@@ -4,9 +4,9 @@ Clinical decision support tool for early or late/overdue long-acting injectable 
 
 ## Live URL
 
-**https://rcwaters.github.io/LAIguide**
+**https://toolmd.github.io/laiguide**
 
-**Admin Portal:** https://rcwaters.github.io/LAIguide/admin.html
+**Admin Portal:** https://toolmd.github.io/laiguide/admin.html
 
 > If the page isn't accessible, enable GitHub Pages in the repo: **Settings → Pages → Branch: `main` → Save**
 
@@ -21,7 +21,7 @@ The project uses [Vite](https://vitejs.dev/) to serve TypeScript — a simple fi
 ### Steps
 
 ```bash
-cd LAIguide
+cd laiguide
 npm install
 npm run dev
 ```
